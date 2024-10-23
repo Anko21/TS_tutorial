@@ -13,7 +13,10 @@ function App() {
   const inputChangeHandler = (e:React.ChangeEvent<HTMLInputElement>):void => {
     setTxt(e.target.value)
   }
-
+  const inputSelectHandler = (e:React.ChangeEvent<HTMLSelectElement>):void => {
+    setTxt(e.target.value)
+  }
+  
   return (
     <div className="App">
       <Product pCode={1} pName= {"Apple"} qnty={10}/>
@@ -24,6 +27,12 @@ function App() {
         <p>{txt}</p>
       <hr/>
         <input type = "text" onChange={inputChangeHandler}/>
+      <hr/>
+        <select onChange={inputSelectHandler}>
+          <option value = 'Apple'>Apple</option>
+          <option value = 'Grapes'>Grapes</option>
+          <option value = 'Orange'>Orange</option>
+        </select>
     </div>
   );
 }
