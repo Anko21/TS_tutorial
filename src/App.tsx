@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useReducer, useRef, useState } from 'react';
 import './App.css';
 import Product from './Product';
 
@@ -16,7 +16,12 @@ function App() {
   const inputSelectHandler = (e:React.ChangeEvent<HTMLSelectElement>):void => {
     setTxt(e.target.value)
   }
-  
+
+  const inputRef= useRef<HTMLInputElement>(null)
+  const btnHandler = (e:React.MouseEvent<HTMLButtonElement>):void => {
+    inputRef.current?.focus()
+  }
+
   return (
     <div className="App">
       <Product pCode={1} pName= {"Apple"} qnty={10}/>
@@ -33,6 +38,11 @@ function App() {
           <option value = 'Grapes'>Grapes</option>
           <option value = 'Orange'>Orange</option>
         </select>
+        <hr/>
+        <h1>Trying use ref</h1>
+        <input type = "text"/><br/>
+        <input type = "text" ref = {inputRef}/><br/>
+        <button onClick = {btnHandler}>Set Focus</button>
     </div>
   );
 }
